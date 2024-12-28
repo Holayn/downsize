@@ -1,43 +1,39 @@
 {
   "name": "thumbsup-downsize",
-  "version": "2.4.3",
+  "version": "2.5.2",
   "description": "Convert / resize / transcode photos & videos to be web-friendly",
   "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "test:u": "mocha test/unit",
     "test:i": "mocha test/integration",
     "test": "mocha",
-    "pretest": "standard && require-lint"
+    "pretest": "standard && depcheck"
   },
   "author": "thumbsup",
   "license": "MIT",
   "dependencies": {
-    "async": "^3.2.3",
+    "async": "^3.2.5",
     "debug": "^4.3.4",
-    "gm": "^1.23.1",
-    "mkdirp": "^1.0.4",
+    "gm": "^1.25.0",
     "split": "^1.0.1",
     "tmp": "^0.2.1"
   },
   "devDependencies": {
-    "fs-extra": "^10.0.1",
+    "depcheck": "^1.4.7",
+    "fs-extra": "^11.1.1",
     "lodash": "^4.17.21",
-    "mocha": "^9.2.2",
+    "mocha": "^10.2.0",
     "mock-spawn": "^0.2.6",
-    "require-lint": "^2.0.3",
     "should": "^13.2.3",
-    "sinon": "^13.0.1",
-    "standard": "^16.0.4"
+    "sinon": "^17.0.1",
+    "standard": "^17.1.0"
   },
   "standard": {
-    "globals": [
-      "test",
-      "describe",
-      "it",
-      "expect",
-      "jest",
-      "beforeEach",
-      "afterEach"
+    "env": [
+      "mocha"
     ]
   }
 }

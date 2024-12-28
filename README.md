@@ -6,9 +6,8 @@ This is one of the core modules of [thumbsup.github.io](https://thumbsup.github.
 
 [![NPM](http://img.shields.io/npm/v/thumbsup-downsize.svg?style=flat-square)](https://npmjs.org/package/thumbsup-downsize)
 [![License](http://img.shields.io/npm/l/thumbsup-downsize.svg?style=flat-square)](https://github.com/thumbsup/thumbsup-downsize)
-[![Build Status](http://img.shields.io/travis/thumbsup/downsize.svg?style=flat-square)](http://travis-ci.org/thumbsup/downsize)
-[![Dependencies](http://img.shields.io/david/thumbsup/downsize.svg?style=flat-square)](https://david-dm.org/thumbsup/downsize)
-[![Dev dependencies](http://img.shields.io/david/dev/thumbsup/downsize.svg?style=flat-square)](https://david-dm.org/thumbsup/downsize)
+![Tests](https://github.com/thumbsup/downsize/actions/workflows/test.yml/badge.svg)
+![Dependencies](https://img.shields.io/librariesio/release/npm/thumbsup-downsize)
 [![Standard - JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](http://standardjs.com/)
 
 ## Setup
@@ -70,6 +69,17 @@ opts = { height: 100, width: 100 }
 ```js
 // quality between 0 and 100
 opts = { quality: 80 }
+```
+
+##### Preserving metadata
+
+By default, all metadata is removed from downsized images.
+This option will keep all EXIF / IPTC / XMP metadata in the target files.
+
+When setting this option to true, images will no longer be auto-rotated.
+
+```js
+opts = { keepMetadata: true }
 ```
 
 ##### Watermark
@@ -201,14 +211,32 @@ opts = { bitrate: '1200k' }
 
 ##### HW acceleration
 
-Enable VAAPI HW accleration if supported on your platform (typically Intel/AMD chipsets.) 
+Enable VAAPI HW acceleration if supported on your platform (typically Intel/AMD chipsets).
 Requires intel-media-driver package to enable.
 This is not compatiable with the `quality` option and requires a `bitrate` setting.
-The default value is `none`
+The default value is `none`.
 
 ```js
 // values 'vaapi' or 'none'
-opts = { video-hwaccel: 'vaapi' }
+opts = { hwaccel: 'vaapi' }
+```
+
+##### Video FPS
+
+The default export video FPS is 25. You can specify an explicit FPS by adding a `framerate` option:
+
+```js
+opts = { framerate: 60 }
+opts = { framerate: 0 }   // preserve the original source video's FPS
+```
+
+##### Preserving Metadata
+
+By default, all metadata is removed from the target video.
+This option preserves the metadata.
+
+```js
+opts = { keepMetadata: true }
 ```
 
 ##### Conversion progress
